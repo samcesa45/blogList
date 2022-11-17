@@ -1,0 +1,4 @@
+GET http://localhost:6000/api/blogs
+
+###
+DELETE  http://localhost:6000/api/blogs/636fdc409af1ba05fe246727
