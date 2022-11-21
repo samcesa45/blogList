@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const helper = require('./test_helper')
 const app = require('../app')
 const api = supertest(app)
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzNzQ2NzU3YmU2NzIxZTllOWY4OWFjNCIsImlhdCI6MTY2ODk0OTMwMiwiZXhwIjoxNjY4OTUyOTAyfQ.9ofBZ1xUQooNp6_acSn2CaAicUH6o1_iS-H0Jj-8OcA'
+const token = 'abcdef'
 
 const Blog = require('../models/blog')
 
