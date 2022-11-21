@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const helper = require('./test_helper')
 const app = require('../app')
 const api = supertest(app)
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzNzQ2NzU3YmU2NzIxZTllOWY4OWFjNCIsImlhdCI6MTY2ODk0OTMwMiwiZXhwIjoxNjY4OTUyOTAyfQ.9ofBZ1xUQooNp6_acSn2CaAicUH6o1_iS-H0Jj-8OcA'
 
 const Blog = require('../models/blog')
 
@@ -31,9 +32,11 @@ describe('addition of a new blog', () => {
             url: "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
             likes: 2,
         }
+
     
         await api
         .post('/api/blogs')
+        .set({'Authorization':`bearer ${token}`})
         .send(newBlog)
         .expect(201)
         .expect('Content-Type',/application\/json/)
@@ -56,6 +59,7 @@ describe('addition of a new blog', () => {
     
         await api
         .post('/api/blogs')
+        .set({'Authorization':`bearer ${token}`})
         .send(blog)
         .expect(201)
         .expect('Content-Type', /application\/json/)
@@ -76,6 +80,7 @@ describe('addition of a new blog', () => {
     
         await api 
         .post('/api/blogs')
+        .set({'Authorization':`bearer ${token}`})
         .send(blog)
         .expect(400)
     
@@ -111,6 +116,7 @@ describe('deletion of a blog', () => {
 
         await api
         .delete(`/api/blogs/${blogToDelete.id}`)
+        .set({'Authorization':`bearer ${token}`})
         .expect(204)
 
         const blogAtEnd = await helper.blogInDB()

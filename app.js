@@ -1,7 +1,7 @@
 const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
-const middleware = require('./utils/middleware.js')
+const middleware = require('./middleware/error.js')
 const blogRouter = require('./controllers/blogs.js')
 const usersRouter = require('./controllers/users.js')
 const loginRouter = require('./controllers/login.js')
@@ -21,6 +21,7 @@ run().catch(error => logger.error('error connecting to MongoDB',error.message))
 app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
+
 
 app.use('/api/blogs',blogRouter)
 app.use('/api/users',usersRouter)
