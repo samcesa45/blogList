@@ -82,7 +82,7 @@ blogRouter.delete('/:id',auth, async (req,res,next) => {
 blogRouter.put('/:id', async (req,res,next) => {
     const id = req.params.id 
     const body = req.body 
-
+    
     const blog = {
       title:body.title,
       author:body.author,
